@@ -1,12 +1,15 @@
-import fastify from "fastify";
+import fastify from 'fastify'
+import { knex } from './database'
 
 // GET, POST, PUT, PATCH e DELETE
 
-const app = fastify();
+// Comando para limpar e padronizar o codigo de acordo com o ESLint-> npm run lint
 
-app.get("/hello", () => {
-  return "Hello caraio";
-});
+const app = fastify()
+
+app.get('/hello', async () => {
+  const test = knex
+})
 
 // PARA RODAR O SERVER EM JS SEM CONVERTER/CRIAR ARQUIVO, EXECUTAR O COMANDO "NPX TSX ARQUIVO.EXTENSAO" -- RECOMENDADO PARA USAR EM DESENVOLVIMENTO, NAO RECOMENDADO PARA PRODUÇÃO
 
@@ -15,7 +18,7 @@ app
     port: 3333,
   })
   .then(() => {
-    console.log("HTTP SERVER RUNNING AT PORT 3333");
-  });
+    console.log('HTTP SERVER RUNNING AT PORT 3333')
+  })
 
 // EcmaScript Lint = ES Lint

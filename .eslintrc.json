@@ -1,6 +1,7 @@
 {
-  "extends": [
-    //Estender uma config (para o ES lint) ja criada
-    "@rocketseat/eslint-config/node"
-  ]
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "extends": ["plugin:prettier/recommended", "@rocketseat/eslint-config/node"]
 }

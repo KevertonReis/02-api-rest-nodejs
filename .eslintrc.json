@@ -1,0 +1,6 @@
+{
+  "extends": [
+    //Estender uma config (para o ES lint) ja criada
+    "@rocketseat/eslint-config/node"
+  ]
+}

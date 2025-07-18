@@ -3,13 +3,27 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/server.ts",
+    "lint": "eslint src --ext .ts --fix",
+    "fix:code": "eslint .ts --fix && prettier --write .ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@rocketseat/eslint-config": "^2.2.2",
+    "@types/knex": "^0.15.2",
+    "@types/node": "^24.0.13",
+    "eslint": "^8.57.1",
+    "eslint-plugin-prettier": "^5.5.1",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "fastify": "^5.4.0",
+    "knex": "^3.1.0",
+    "sqlite3": "^5.1.7"
   }
 }

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "lint": "eslint src --ext .ts --fix",
+    "knex": "node --import tsx ./node_modules/knex/bin/cli.js",
     "fix:code": "eslint .ts --fix && prettier --write .ts"
   },
   "keywords": [],

@@ -1,4 +1,5 @@
-import { Knex, knex as setupKnex } from 'knex';
+import { Knex } from "knex";
+
 
 export const config: Knex.Config = {
   client: "sqlite3", // ou 'pg' para PostgreSQL
@@ -12,4 +13,4 @@ export const config: Knex.Config = {
   },
 };
 
-export const knex = setupKnex(config)
+export default config;

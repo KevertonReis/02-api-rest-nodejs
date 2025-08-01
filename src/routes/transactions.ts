@@ -1,19 +1,24 @@
 import { FastifyInstance } from 'fastify'
 import { knex } from '../database'
 import { z } from 'zod'
-import crypto from 'node:crypto'
+import crypto, { randomUUID } from 'node:crypto'
 
 export async function transactionsRoutes(app: FastifyInstance) {
   // não precisa definir o nome que ja esta definido em app.register no server.ts
 
-  //rota para listar todas as transações
+  // rota para listar todas as transações
   app.get('/', async () => {
     const transactions = await knex('transactions').select()
 
-    //retornar como objeto
+    // retornar como objeto
     return {
       transactions,
     }
+  })
+
+  app.get('/summary', async () => {
+    const summary = await knex('transactions').sum('amount', { as: 'amount' }).first()
+    return { summary }
   })
 
   app.get('/:id', async (req) => {
@@ -26,10 +31,10 @@ export async function transactionsRoutes(app: FastifyInstance) {
 
     const transaction = await knex('transactions').where('id', id).first()
 
-    return {transaction}
+    return { transaction }
   })
 
-  //rota para criar as transações
+  // rota para criar as transações
   app.post('/', async (req, reply) => {
     const createTransactionBodySchema = z.object({
       title: z.string(),
@@ -38,6 +43,18 @@ export async function transactionsRoutes(app: FastifyInstance) {
     })
 
     const { title, amount, type } = createTransactionBodySchema.parse(req.body) // nada abaixo desse codigo sera executado sem essa validação
+
+    // insere o id quando o usuario esta logado
+    let sessionId = req.cookies.sessionId
+
+    if (!sessionId) {
+      sessionId = randomUUID()
+
+      reply.cookie('sessionId', sessionId, {
+        path: '/',
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+      })
+    }
 
     await knex('transactions').insert({
       id: crypto.randomUUID(),

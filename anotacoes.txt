@@ -3,3 +3,5 @@ instalar a extensao DotEnv e o pacote "npm i dotenv"
 
 fastfy plugins - toda função com plugin fastify deve ser declarada com async
 
+cookies -> formas da gente manter contexto entre as requisições
+

@@ -1,14 +1,15 @@
 {
   "extends": ["plugin:prettier/recommended", "@rocketseat/eslint-config/node"],
   "rules": {
+    "semi": ["error", "never"],
     "linebreak-style": ["error", "windows"], // ou 'windows' se necessário
     "prettier/prettier": [
       "error",
       {
-        "endOfLine": "auto",
+        "endOfLine": "crlf",
         "singleQuote": true,
         "parser": "flow",
-        "usePrettierrc": false
+        "semi": false
       }
     ]
   }

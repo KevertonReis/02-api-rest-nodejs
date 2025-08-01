@@ -17,7 +17,7 @@ export async function transactionsRoutes(app: FastifyInstance) {
     await knex('transactions').insert({
       id: crypto.randomUUID(),
       title,
-      amount: type === 'credit' ? amount : amount * -1, // se amount for igual a credit ele vai ser o valor de amount, se for debit sera amount *-1
+      amount: type === 'credit' ? amount : amount * -1, // se type for igual a credit ele vai ser o valor de amount, se for debit sera amount *-1
     });
 
     return reply.status(201).send();

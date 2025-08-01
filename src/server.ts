@@ -1,7 +1,6 @@
 import fastify from 'fastify';
-import { knex } from './database';
-import crypto from 'node:crypto';
 import { env } from './env';
+import { transactionsRoutes } from './routes/transactions';
 
 // GET, POST, PUT, PATCH e DELETE
 // Comando para limpar e padronizar o codigo de acordo com o ESLint-> npm run lint
@@ -10,19 +9,9 @@ import { env } from './env';
 
 const app = fastify();
 
-app.get('/hello', async () => {
-  const transaction = await knex('transactions')
-    .insert({
-      id: crypto.randomUUID(),
-
-      title: 'Transaction test',
-
-      amount: 1000,
-    })
-
-    .returning('*');
-
-  return transaction;
+// passa configurações
+app.register(transactionsRoutes, {
+  prefix: 'transactions', // prefixo da url para que o plugin seja ativado, todas as rotas que sejam /transactions passa por esse plugin
 });
 
 app

@@ -6,7 +6,7 @@ import { z } from 'zod';
 
 const envSchema = z.object({
   DATABASE_URL: z.string(),
-  PORT: z.number(),
+  PORT: z.coerce.number(), // força conversão de string para número
   NODE_ENV: z.enum(['development', 'test', 'production']).default('production'), // configurando o ambiente
 });
 

@@ -1,3 +1,5 @@
 variaveis de ambiente = podem ser diferentes dependendo do ambiente em que a aplicação esta sendo executada EX: ambiente de desenvolvimento, de produção, de teste
 instalar a extensao DotEnv e o pacote "npm i dotenv"
 
+fastfy plugins - toda função com plugin fastify deve ser declarada com async
+

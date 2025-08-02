@@ -10,6 +10,8 @@ import cookie from '@fastify/cookie'
 
 const app = fastify()
 
+app.register(cookie)
+
 // passa configurações
 app.register(transactionsRoutes, {
   prefix: 'transactions', // prefixo da url para que o plugin seja ativado, todas as rotas que sejam /transactions passa por esse plugin
@@ -22,5 +24,5 @@ app
   })
 
   .then(() => {
-    console.log('HTTP SERVER RUNNING AT PORT 3333')
+    console.log('HTTP SERVER RUNNING')
   })

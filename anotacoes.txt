@@ -5,3 +5,10 @@ fastfy plugins - toda função com plugin fastify deve ser declarada com async
 
 cookies -> formas da gente manter contexto entre as requisições
 
+tipos de testes
+unitarios: em uma unidade da aplicação - testa uma unica coisa isolada
+integração: entre unidades
+nd to end: simula um usuario
+
+piramide de teste; 
+

@@ -7,6 +7,8 @@ import { checkSessionIdExists } from '../middlewares/check-session-id-exists'
 export async function transactionsRoutes(app: FastifyInstance) {
   // não precisa definir o nome que ja esta definido em app.register no server.ts
 
+  // app.addHook('preHandler', async (req, reply) => {}) global, porem dentro do contexo
+
   // rota para criar as transações
   app.post('/', async (req, reply) => {
     const createTransactionBodySchema = z.object({

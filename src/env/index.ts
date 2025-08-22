@@ -1,8 +1,16 @@
-import 'dotenv/config'
+import { config } from 'dotenv'
 import { z } from 'zod'
 
 // node_env é enviado pelas ferramentas utilizadas na aplicação
 // enum é uma entre algumas opções
+
+console.log(process.env)
+
+if (process.env.NODE_ENV === 'test') {
+  config({ path: '.env.test' })
+} else {
+  config()
+}
 
 const envSchema = z.object({
   DATABASE_URL: z.string(),
